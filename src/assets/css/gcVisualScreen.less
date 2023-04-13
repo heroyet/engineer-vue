@@ -1,0 +1,1206 @@
+// v-scrollBar 滚动条行内加这个（注：不是class内加）
+@font-face {
+font-family: "优设标题黑";
+src: url(~@/assets/font/优设标题黑（可商用）.ttf);
+}
+@font-face {
+font-family: "旁门正道标题体";
+src: url(~@/assets/font/旁门正道标题体.ttf);
+}
+@font-face {
+  font-family: "思源黑体";
+  src: url(~@/assets/font/思源黑体-Regular.otf);
+}
+@font-face {
+  font-family: "思源黑体H";
+  src: url(~@/assets/font/思源黑体-Heavy.otf);
+}
+.ps .ps__rail-x:hover, .ps .ps__rail-y:hover, .ps .ps__rail-x:focus, .ps .ps__rail-y:focus, .ps .ps__rail-x.ps--clicking, .ps .ps__rail-y.ps--clicking{
+  opacity: 0;
+}
+
+
+.orangeT {
+  color: #fb9041 !important;
+}
+.blueT {
+  color: #13fbfe !important;
+}
+.blue2T {
+  color: #5bacf8 !important;
+}
+.violetT {
+  color: #d85efb !important;
+}
+.redT {
+  color: #cc0000 !important;
+}
+.yellowT {
+  color: #fdd934 !important;
+}
+.greenT {
+  color: #2ed48d !important;
+}
+.greenT2 {
+  color: #70e705 !important;
+}
+.yellowT2 {
+  color: #e1b242 !important;
+}
+.numberB {
+  font-size: 24px;
+  color: #13fbfe;
+  font-family: '旁门正道标题体';
+}
+
+
+.socialVisualScreen{
+  width: 3840px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+  &::before,&::after{
+    content: '';
+    width: 31px;
+    height: 1023px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+  }
+  &::before{
+    left: 0;
+    //background: url(~@/assets/images/socialVisualScreen/boxBg1.png) no-repeat;
+  }
+  &::after{
+    right: 0;
+    //background: url(~@/assets/images/socialVisualScreen/boxBg2.png) no-repeat;
+  }
+  .footBg{
+    height: 31px;
+    background: url(~@/assets/images/socialVisualScreen/boxBg3.png) no-repeat;
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: 0;
+    z-index: 2;
+  }
+  .shade{
+    width: 660px;
+    height: 1080px;
+    background: url(~@/assets/images/socialVisualScreen/boxBg4.png) no-repeat;
+    background-size: 50% 50%;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    z-index: 1;
+    &.shadeLeft{
+      width: 650px;
+      right: initial;
+      left: 0;
+      background: url(~@/assets/images/socialVisualScreen/boxBg5.png) no-repeat;
+      background-size: 50% 50%;
+    }
+  }
+}
+
+// 头部
+.eui-socialHead{
+  display: flex;
+  align-items: center;
+  height: 102px;
+  background: url(~@/assets/images/socialVisualScreen/headBg.png) no-repeat;
+  position: relative;
+  z-index: 99;
+  &::before,&::after{
+    content: '';
+    width: 2456px;
+    height: 22px;
+    background: url(~@/assets/images/socialVisualScreen/headBg1.png) no-repeat;
+    position: absolute;
+  }
+  &::before{
+    left: 1030px;
+    top: 10px;
+    animation: socialHeadB 10s infinite linear;
+  }
+  &::after{
+    left: 1020px;
+    top: 20px;
+    animation: socialHeadB 15s infinite linear;
+  }
+  @keyframes socialHeadB {
+    0%{width: 0;}
+    100%{width: 2456px;}
+  }
+  .logo{
+    margin:-10px 0 0 50px;
+  }
+  .nav{
+    display: flex;
+    margin:10px 0 0 120px;
+    p{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "优设标题黑";
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 0 14px rgba(21,128,244,0.6),0 0 14px rgba(21,128,244,0.6),0 0 14px rgba(21,128,244,0.6);
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      &::before{
+        content: '';
+        position: absolute;
+      }
+      &.firstNav{
+        width: 220px;
+        height: 59px;
+        font-size: 42px;
+        &::before{
+          width: 302px;
+          height: 59px;
+          background: url(~@/assets/images/socialVisualScreen/navBg.png) no-repeat;
+          left: -48px;
+          top: 0;
+          z-index: 0;
+        }
+      }
+      &.secondNav{
+        width: 174px;
+        height: 48px;
+        font-size: 36px;
+        margin-left: 32px;
+        &::before{
+          width: 236px;
+          height: 48px;
+          background: url(~@/assets/images/socialVisualScreen/navBg2.png) no-repeat;
+          left: -30px;
+          top: 0;
+          z-index: 0;
+        }
+      }
+      span{
+        position: relative;
+        z-index: 2;
+      }
+    }
+  }
+}
+// 头部
+// 左侧操作栏
+.eui-LeftOperation {
+  width: 86px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1410px;
+  z-index: 99;
+  ul {
+    li {
+      margin: 30px 0;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+      &:hover,
+      &.active {
+        opacity: 1;
+        .photo {
+          &::before {
+            animation: photoB 3s infinite linear alternate;
+          }
+        }
+      }
+      &.active {
+        opacity: 1;
+        .photo {
+          background: url(~@/assets/DpImages/foot-navBgYellow.png) no-repeat;
+          &::before {
+            background: url(~@/assets/DpImages/foot-navBg2Yellow.png) no-repeat;
+            background-size: 100% 100%!important;
+          }
+          p{
+
+          }
+        }
+      }
+      .photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 86px;
+        height: 100px;
+        background: url(~@/assets/DpImages/foot-navBg.png) no-repeat;
+        background-size: 100% 100%!important;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+        &::before {
+          content: '';
+          width: 77px;
+          height: 77px;
+          background: url(~@/assets/DpImages/foot-navBg2.png) no-repeat;
+          background-size: 100% 100%!important;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-top: -38.5px;
+          margin-left: -38.5px;
+        }
+        @keyframes photoB {
+          from {
+            transform: rotate(0);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        p{
+          font-size: 24px;
+          color: #ffffff;
+          font-family: "思源黑体";
+          padding: 0 10px;
+          text-align: center;
+          line-height: 26px;
+          text-shadow: 0 0 38px rgba(21,128,244,0.41), 0 0 38px rgba(21,128,244,0.41) ,0 0 38px rgba(21,128,244,0.41);
+        }
+      }
+    }
+  }
+}
+// 左侧操作栏
+
+// 全网态势内容靠左侧
+.eui-socialLf{
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  position: absolute;
+  left: 60px;
+  bottom: 60px;
+  top: 130px;
+  z-index: 99;
+  overflow: hidden;
+}
+// 全网态势内容靠左侧
+// 疫情防控内容靠右侧
+.eui-socialRt{
+  display: flex;
+  width: 1680px;
+  position: absolute;
+  right: 60px;
+  bottom: 60px;
+  top: 130px;
+  z-index: 99;
+  overflow: hidden;
+  // background: #ffffff;
+  .lf{
+    display: flex;
+    flex-wrap: wrap;
+    width: 970px;
+    margin-right: 30px;
+  }
+  .rt{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+}
+// 疫情防控内容靠右侧
+
+// 公用标题-一级
+.eui-titleLine{
+  display: flex;
+  align-items: center;
+  height: 51px;
+  margin-bottom: 20px;
+  position: relative;
+  &.titleBg1{
+    background: url(~@/assets/images/socialVisualScreen/titleBg3.png) no-repeat;
+  }
+  &.titleBg2{
+    background: url(~@/assets/images/socialVisualScreen/titleBg5.png) no-repeat;
+  }
+  &.titleBg3{
+    background: url(~@/assets/images/socialVisualScreen/titleBg4.png) no-repeat;
+  }
+  &.titleBg4{
+    background: url(~@/assets/images/socialVisualScreen/titleBg6.png) no-repeat;
+  }
+  &.titleBg5{
+    background: url(~@/assets/images/socialVisualScreen/titleBg7.png) no-repeat;
+  }
+  &.titleBg6{
+    background: url(~@/assets/images/socialVisualScreen/titleBg10.png) no-repeat;
+  }
+  &.titleBg7{
+    background: url(~@/assets/images/socialVisualScreen/titleBg11.png) no-repeat;
+  }
+  .pic{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    &::before{
+      content: '';
+      width: 50px;
+      height: 50px;
+      background: url(~@/assets/images/socialVisualScreen/titleBg1.png) no-repeat;
+      position: absolute;
+      left: -4px;
+      top: -3px;
+      animation: titleLineB 3s infinite linear;
+    }
+    @keyframes titleLineB {
+      0%{transform: rotate(0);}
+      100%{transform: rotate(360deg);}
+    }
+    &::after{
+      content: '';
+      width: 27px;
+      height: 30px;
+      background: url(~@/assets/images/socialVisualScreen/titleBg2.png) no-repeat;
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      animation: titleLineA 3s infinite linear alternate;
+    }
+    @keyframes titleLineA {
+      0%{transform: scale(0.9);opacity: 0.5;}
+      100%{transform: scale(1.1); opacity: 1;}
+    }
+  }
+  .name{
+    flex: 1;
+    font-family: "优设标题黑";
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0 0 3px rgba(0,0,0,0.52),0 0 3px rgba(0,0,0,0.52),0 0 12px rgba(240,205,20,0.5),0 0 12px rgba(240,205,20,0.5),0 0 12px rgba(240,205,20,0.5);
+    margin-left: 10px;
+    b{
+      margin-left: 5px;
+      &.yellowB{
+        color: #fdd934;
+      }
+    }
+  }
+  /deep/.eui-inputBox{
+    width: 212px;
+    height: 34px;
+    .el-input__inner{
+      width: 100%;
+      height: 34px;
+      border: none;
+      background: rgba(18,87,187,0.6);
+      border-radius: 17px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+    .el-input__suffix{
+      display: flex;
+      align-items: center;
+      color: #46afe8;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}
+// 公用标题-一级
+// 公用标题-二级
+.eui-titleLine2{
+  display: flex;
+  align-items: center;
+  height: 36px;
+  background: url(~@/assets/images/socialVisualScreen/titleBg8.png) no-repeat;
+  margin-bottom: 15px;
+  position: relative;
+  &.titleScdBg1{
+    background: url(~@/assets/images/socialVisualScreen/titleBg12.png) no-repeat;
+  }
+  .pic{
+    width: 24px;
+    height: 24px;
+    position: relative;
+    &::before{
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: url(~@/assets/images/socialVisualScreen/titleBg9.png) no-repeat;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      animation: titleLineB 3s infinite linear;
+    }
+    @keyframes titleLineB {
+      0%{transform: rotate(0);}
+      100%{transform: rotate(360deg);}
+    }
+    &::after{
+      content: '';
+      width: 25px;
+      height: 28px;
+      background: url(~@/assets/images/socialVisualScreen/arrows.png) no-repeat;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -12.5px;
+      margin-top: -14px;
+      animation: titleLineA 3s infinite linear alternate;
+    }
+    @keyframes titleLineA {
+      0%{transform: scale(0.9);opacity: 0.5;}
+      100%{transform: scale(1.1); opacity: 1;}
+    }
+  }
+  .name{
+    flex: 1;
+    font-family: "思源黑体H";
+    font-style: oblique;
+    font-size: 22px;
+    color: #ffffff;
+    margin-left: 10px;
+    b{
+      margin-left: 5px;
+      &.yellowB{
+        color: #fdd934;
+      }
+    }
+  }
+  /deep/.eui-inputBox{
+    width: 212px;
+    height: 34px;
+    .el-input__inner{
+      width: 100%;
+      height: 34px;
+      border: none;
+      background: rgba(18,87,187,0.6);
+      border-radius: 17px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+    .el-input__suffix{
+      display: flex;
+      align-items: center;
+      color: #46afe8;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}
+// 公用标题-二级
+
+// 公用块
+.eui-piece{
+  display: flex;
+  flex-direction: column;
+  .eui-pieceBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+}
+// 公用块
+// 日期选择器
+/deep/.eui-datePicker{
+  width: 100%;
+  height: 34px;
+  border: none;
+  background: rgba(18,87,187,0.6);
+  border-radius: 17px;
+  font-size: 14px;
+  color: #ffffff;
+  .el-range-input,.el-input__inner{
+    background: none;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  .el-input__icon{
+    display: flex;
+    align-items: center;
+    color: #46afe8;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  .el-range-separator{
+    font-size: 14px;
+    color: #ffffff;
+  }
+}
+// 日期选择器
+.eui-btnTl{
+  margin-right: 10px;
+  .el-button{
+    min-width: 60px;
+    height: 28px;
+    line-height: 25px;
+    padding: 0 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    background: rgba(36,139,234,0.1);
+    box-shadow: inset 0 0 8px rgba(36,139,234,0.34);
+    border: none;
+    position: relative;
+    &:hover,&.active{
+      color: #ffffff;
+      background: none;
+      box-shadow: inset 0 0 8px rgba(36,139,234,0.34), inset 0 0 8px rgba(36,139,234,0.34), inset 0 0 8px rgba(36,139,234,0.34);
+      &::before{
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg,rgba(15,132,234,0),rgba(15,132,234,1),rgba(15,132,234,0));
+        border-radius: 20px;
+        position: absolute;
+        left: 0;
+        top:0;
+        z-index: -1;
+      }
+    }
+  }
+}
+// 公用表格
+/deep/.eui-table {
+  background: none !important;
+  &::before {
+    display: none;
+  }
+  tr {
+    background: none !important;
+  }
+  .el-table__header-wrapper .el-table__cell {
+    padding: 6px 0;
+    background: rgba(70, 175, 232, 0.3) !important;
+    .cell {
+      font-size: 16px !important;
+      color: #feffff !important;
+      font-weight: bold;
+    }
+  }
+  .el-table__cell {
+    padding: 7px 0 !important;
+    border-bottom: none !important;
+    cursor: pointer;
+    .cell {
+      font-size: 16px;
+      color: #feffff;
+      .num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        background: rgba(0, 0, 0, 0.1);
+        border: solid 2px #00f2ff;
+        border-radius: 100%;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: bold;
+        margin: auto;
+        line-height: 18px;
+        &::before {
+          content: '';
+          width: 25px;
+          height: 30px;
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%);
+          top: 4px;
+          z-index: -1;
+        }
+        &.num1 {
+          background: none;
+          border-radius: 0;
+          border: none;
+          align-items: flex-start;
+          line-height: 18px;
+          &::before {
+            background: url(~@/assets/DpImages/icon28.png) no-repeat;
+          }
+        }
+        &.num2 {
+          background: none;
+          border-radius: 0;
+          border: none;
+          align-items: flex-start;
+          line-height: 18px;
+          &::before {
+            background: url(~@/assets/DpImages/icon29.png) no-repeat;
+          }
+        }
+        &.num3 {
+          background: none;
+          border-radius: 0;
+          border: none;
+          align-items: flex-start;
+          line-height: 18px;
+          &::before {
+            background: url(~@/assets/DpImages/icon30.png) no-repeat;
+          }
+        }
+      }
+    }
+  }
+  &.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell {
+    background: rgba(70, 175, 232, 0.12);
+  }
+  &.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+    background: rgba(70, 175, 232, 0.45);
+  }
+}
+// 公用表格
+// 左侧操作栏
+.eui-LeftOperation {
+  width: 86px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1410px;
+  z-index: 99;
+  ul {
+    li {
+      margin: 30px 0;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+      &:hover,
+      &.active {
+        opacity: 1;
+        .photo {
+          &::before {
+            animation: photoB 3s infinite linear alternate;
+          }
+        }
+      }
+      &.active {
+        opacity: 1;
+        .photo {
+          background: url(~@/assets/DpImages/foot-navBgYellow.png) no-repeat;
+          &::before {
+            background: url(~@/assets/DpImages/foot-navBg2Yellow.png) no-repeat;
+            background-size: 100% 100% !important;
+          }
+          p {
+          }
+        }
+      }
+      .photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 86px;
+        height: 100px;
+        background: url(~@/assets/DpImages/foot-navBg.png) no-repeat;
+        background-size: 100% 100% !important;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+        &::before {
+          content: '';
+          width: 77px;
+          height: 77px;
+          background: url(~@/assets/DpImages/foot-navBg2.png) no-repeat;
+          background-size: 100% 100% !important;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-top: -38.5px;
+          margin-left: -38.5px;
+        }
+        @keyframes photoB {
+          from {
+            transform: rotate(0);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        p {
+          font-size: 24px;
+          color: #ffffff;
+          font-family: '思源黑体';
+          padding: 0 10px;
+          text-align: center;
+          line-height: 26px;
+          text-shadow: 0 0 38px rgba(21, 128, 244, 0.41), 0 0 38px rgba(21, 128, 244, 0.41),
+            0 0 38px rgba(21, 128, 244, 0.41);
+        }
+      }
+    }
+  }
+}
+// 左侧操作栏
+
+@keyframes scaleBox {
+  0%{transform: scale(1);}
+  100%{transform: scale(1.2);}
+}
+// animation: scaleBox 2s infinite linear alternate;
+
+.minemap-popup {
+  z-index: 10;
+}
+.minemap-popup-content {
+  background-color: transparent !important;
+  padding: 0px !important;
+}
+.minemap-popup-content .custom-popup-class.MapPopupSpecial {
+  color: #fff;
+}
+.minemap-popup-content .custom-popup-class.MapPopupSpecial .custom-popup-title {
+  height: 35px;
+  width: 170px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #fff;
+  text-indent: 5px;
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), #00bac4);
+  font-size: 14px;
+}
+.minemap-popup-content .custom-popup-class.MapPopupSpecial .custom-popup-title span{
+  text-indent: 10px;;
+}
+.minemap-popup-content .custom-popup-class.MapPopupSpecial .custom-popup-content {
+  padding: 5px;
+  border: 2px solid #00bbc5;
+}
+.minemap-popup-content .custom-popup-class.MapPopupSpecial .custom-popup-tips {
+  width: 100%;
+  height:30px;
+  background-image:url("~@/assets/images/marker_center.png");
+  background-repeat:no-repeat;
+  background-position: center;
+}
+.minemap-popup-content .custom-popup-class.MapPopupSpecial .custom-popup-content .empty-border {
+  height: 35px;
+  width: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  color: #01f462;
+  font-size: 16px;
+  overflow: hidden;
+}
+.minemap-popup-content .custom-popup-class.MapPopupSpecial .custom-popup-content .empty-border span{
+  display: inline-block;
+  white-space: nowrap;
+  animation: 10s wordsLoop linear infinite normal;
+}
+@keyframes wordsLoop {
+  0% {
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+  }
+}
+.minemap-popup-tip {
+  display: none;
+}
+.red {
+  color: #fe2a27;
+}
+.yellow {
+  color: #f8fe43;
+}
+
+
+//地图打点
+.eui-map-pop {
+  position: relative;
+  width: 38px;
+  height: 47px;
+  // transform: translate(-50%, -100%);
+  z-index: 1;
+  .pop-pointer {
+    width: 100%;
+    height: 100%;
+    background: url('~@/assets/images/pop_dot.png') no-repeat;
+    filter: drop-shadow(0 10px 40px #006dfb);
+  }
+  .pop-panel {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 56px;
+    padding: 7px 6px;
+    width: 185px;
+    height: 73px;
+    background: url('~@/assets/images/pop_panel.png') no-repeat;
+    background-size: 100% 100%;
+    transform: translate(-50%, 0);
+    box-sizing: border-box;
+    cursor: pointer;
+    .title {
+      display: flex;
+      padding: 0 8px;
+      height: 24px;
+      font-size: 14px;
+      color: #fff;
+      align-items: center;
+      .t {
+        font-family: 'ysbt';
+        font-size: 18px;
+      }
+      .n {
+        font-weight: bold;
+      }
+    }
+    .row {
+      display: flex;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      .five-star {
+        width: 90px;
+        height: 13px;
+        background: url('~@/assets/images/ic-star-five.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .four-star {
+        width: 71px;
+        height: 13px;
+        background: url('~@/assets/images/ic-star-four.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .t {
+        margin-left: 10px;
+        font-size: 14px;
+        color: #fff;
+        .n {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+.eui-mapDot {
+  position: relative;
+  z-index: 9;
+}
+.eui-mapDot1 {
+  width: 122px;
+  font-size: 14px;
+  color: #ffffff;
+  font-family: '思源黑体';
+  text-align: center;
+  white-space: nowrap;
+  width: 122px;
+  height: 84px;
+  .name {
+    margin-top: 10px;
+    padding-top: 27px;
+  }
+  &::before {
+    content: '';
+    width: 122px;
+    height: 84px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  &.greenBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-1.png) no-repeat;
+    }
+  }
+  &.orangeBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-3.png) no-repeat;
+    }
+  }
+  &.redBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-2.png) no-repeat;
+    }
+  }
+  &.grayBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-4.png) no-repeat;
+    }
+  }
+}
+.eui-mapDot2 {
+  width: 135px;
+  padding: 34px 15px 0;
+  &::before {
+    content: '';
+    width: 162px;
+    height: 171px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  &.blueBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-9.png) no-repeat;
+    }
+  }
+  &.greenBg {
+    &::before {
+      height: 162px;
+      background: url(~@/assets/images/socialVisualScreen/mapdot-22.png) no-repeat;
+    }
+  }
+  .name {
+    font-size: 16px;
+    font-family: "思源黑体";
+    color: #000000;
+    text-align: right;
+    position: absolute;
+    right: 4px;
+    top: 0;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    line-height: 28px;
+    span {
+      flex: 1;
+      font-size: 16px;
+      color: #ffffff;
+      text-align: start;
+    }
+    b {
+      font-size: 14px;
+      color: #00f0ff;
+    }
+  }
+}
+.eui-mapDot3 {
+  &::before {
+    content: '';
+    width: 103px;
+    height: 113px;
+    position: absolute;
+    left: -21px;
+    top: -11px;
+    z-index: -1;
+  }
+  &.greenBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-15.png) no-repeat;
+    }
+  }
+  &.orangeBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-17.png) no-repeat;
+    }
+  }
+  &.redBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-16.png) no-repeat;
+    }
+  }
+  &.grayBg {
+    &::before {
+      background: url(~@/assets/images/socialVisualScreen/mapdot-18.png) no-repeat;
+    }
+  }
+  span {
+    font-size: 14px;
+    color: #ffffff;
+    display: flex;
+    padding-top: 15px;
+    b {
+      font-size: 36px;
+      font-family: '庞门正道标题体';
+    }
+  }
+}
+.eui-mapDot4{
+  text-align: center;
+  .name {
+    width: 135px;
+    line-height: 40px;
+    font-family: "思源黑体";
+    font-size: 22px;
+    color: #ffffff;
+    background: url(~@/assets/images/socialVisualScreen/mapdot-20.png);
+    background-size: 100% 100%;
+  }
+  .name2 {
+    width: 135px;
+    line-height: 40px;
+    font-family: "思源黑体";
+    font-size: 20px;
+    color: #ffffff;
+    background: url(~@/assets/images/socialVisualScreen/mapdot-20.png);
+    background-size: 100% 100%;
+  }
+  .name3 {
+    // width: 165px;
+    line-height: 40px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-family: "思源黑体";
+    font-size: 22px;
+    color: #ffffff;
+    background-color: #0531023C;
+    border: 1px solid #64c801;
+  }
+  // .bg-left {
+  //   // margin-left: 41px;
+  //   width: 53px;
+  //   height: 60px;
+  //   background: url(~@/assets/images/socialVisualScreen/mapdot-25.png);
+  //   background-size: 100% 100%;
+  // }
+  .bt-bg {
+    // margin-left: 41px;
+    width: 53px;
+    height: 60px;
+    background: url(~@/assets/images/socialVisualScreen/mapdot-19.png);
+    background-size: 100% 100%;
+  }
+  .bt-bg2 {
+    // margin-left: 41px;
+    width: 53px;
+    height: 60px;
+    background: url(~@/assets/images/socialVisualScreen/mapdot-25.png);
+    background-size: 100% 100%;
+  }
+}
+.eui-mapDot5{
+  width: 148px;
+  // text-align: center;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  // &::before{
+  //   content: '';
+  //   width: 148px;
+  //   height: 124px;
+  //   background: url(~@/assets/images/socialVisualScreen/mapdot-21.png) no-repeat;
+  //   position: absolute;
+  //   left: - 48px;
+  //   top: 0;
+  //   z-index: -1;
+  // }
+  .bg {
+    width: 148px;
+    height: 124px;
+    background: url(~@/assets/images/socialVisualScreen/mapdot-equip1.png) no-repeat;
+    position: absolute;
+    left: - 48px;
+    top: 0;
+    z-index: -1;
+  }
+  .bg2 {
+    width: 148px;
+    height: 124px;
+    background: url(~@/assets/images/socialVisualScreen/mapdot-equip2.png) no-repeat;
+    position: absolute;
+    left: - 48px;
+    top: 0;
+    z-index: -1;
+  }
+  .bg3 {
+    width: 148px;
+    height: 124px;
+    background: url(~@/assets/images/socialVisualScreen/mapdot-equip3.png) no-repeat;
+    position: absolute;
+    left: - 48px;
+    top: 0;
+    z-index: -1;
+  }
+  .per{
+    margin-top: 3px;
+    font-size: 14px;
+    color: #ffffff;
+    margin-left: 30px;
+    b{
+      font-size: 18px;
+    }
+  }
+  .name{
+    margin-left: 30px;
+    font-size: 20px;
+    font-family: '优设标题黑';
+    color: #ffffff;
+  }
+}
+.eui-mapDot7 {
+  text-align: center;
+  font-family: "思源黑体";
+  &.bg-small {
+    width: 113px;
+    height: 98px;
+  }
+  &.small1 {
+    background: url(~@/assets/socialVisualScreen/roadnet1.png);
+    background-size: 100% 100%;
+  }
+  &.small2 {
+    background: url(~@/assets/socialVisualScreen/roadnet2.png);
+    background-size: 100% 100%;
+  }
+  &.small3 {
+    background: url(~@/assets/socialVisualScreen/roadnet3.png);
+    background-size: 100% 100%;
+  }
+  &.small-other {
+    background: url(~@/assets/socialVisualScreen/roadnet4.png);
+    background-size: 100% 100%;
+  }
+  &.bg-big {
+    width: 157px;
+    height: 98px;
+  }
+  &.big1 {
+    background: url(~@/assets/socialVisualScreen/roadnet11.png);
+    background-size: 100% 100%;
+  }
+  &.big2 {
+    background: url(~@/assets/socialVisualScreen/roadnet12.png);
+    background-size: 100% 100%;
+  }
+  &.big3 {
+    background: url(~@/assets/socialVisualScreen/roadnet13.png);
+    background-size: 100% 100%;
+  }
+  &.big-other {
+    background: url(~@/assets/socialVisualScreen/roadnet14.png);
+    background-size: 100% 100%;
+  }
+  .name {
+    width: 100%;
+    padding-top: 20px;
+    line-height: 1;
+    font-size: 15px;
+    color: #12f4fe;
+  }
+  .content {
+    width: 100%;
+    margin-top: 5px;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  .index {
+    position: absolute;
+    right: 10px;
+    top: -7px;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+}
+.eui-mapDot13{
+  width: 53px;
+  height: 60px;
+  background: url(~@/assets/images/socialVisualScreen/mapdot-13.png);
+  background-size: 100% 100%;
+}
